@@ -1,4 +1,4 @@
-package com.marcoscg.dialogsheet
+package com.marcoscg.bottomdialog
 
 import android.content.Context
 import android.os.Bundle

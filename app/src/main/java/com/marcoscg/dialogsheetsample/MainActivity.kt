@@ -5,11 +5,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.marcoscg.dialogsheet.DialogSheet
+import com.marcoscg.bottomdialog.BottomDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     private fun createAndShowDialog() {
         val useNewDialogStyle = newStyleCheckBox.isChecked
 
-        val dialogSheet = DialogSheet(this@MainActivity, useNewDialogStyle) // you can also use DialogSheet2 if you want the new style
+        val dialogSheet = BottomDialog(this@MainActivity, useNewDialogStyle) // you can also use DialogSheet2 if you want the new style
                 //.setNewDialogStyle() // You can also set new style by this method, but put it on the first line
                 .setTitle(R.string.app_name)
                 .setMessage(R.string.lorem)
