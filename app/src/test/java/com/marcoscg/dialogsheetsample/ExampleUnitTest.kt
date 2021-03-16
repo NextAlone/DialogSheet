@@ -1,4 +1,4 @@
-package com.marcoscg.dialogsheetsample
+package ltd.nextalone.dialogsheetsample
 
 import org.junit.Assert
 import org.junit.Test

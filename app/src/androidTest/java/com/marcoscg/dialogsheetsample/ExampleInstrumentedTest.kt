@@ -1,4 +1,4 @@
-package com.marcoscg.dialogsheetsample
+package ltd.nextalone.dialogsheetsample
 
 import android.content.Context
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext: Context = InstrumentationRegistry.getInstrumentation().targetContext
-        Assert.assertEquals("com.marcoscg.dialogsheetsample", appContext.packageName)
+        Assert.assertEquals("ltd.nextalone.dialogsheetsample", appContext.packageName)
     }
 }

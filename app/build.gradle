@@ -5,11 +5,11 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 30
     defaultConfig {
-        applicationId "com.marcoscg.dialogsheetsample"
+        applicationId "ltd.nextalone.dialogsheetsample"
         minSdkVersion 14
         targetSdkVersion 30
-        versionCode 214
-        versionName "2.1.4"
+        versionCode 215
+        versionName "2.1.5"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
