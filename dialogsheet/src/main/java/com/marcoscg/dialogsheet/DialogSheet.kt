@@ -371,18 +371,22 @@ open class DialogSheet(private val context: Context, private var useNewStyle: Bo
     fun setRoundedCorners(roundedCorners: Boolean): DialogSheet {
         if (roundedCorners) {
             val bgView = bottomSheetDialog?.findViewById<View>(R.id.mainDialogContainer)
-            bgView?.setBackgroundResource(if (iconCardView?.visibility != View.GONE) {
-                if (useNewStyle) R.drawable.dialog_sheet_main_background_round_margin else R.drawable.dialog_sheet_main_background_round
-            } else {
-                R.drawable.dialog_sheet_main_background_round
-            })
+            bgView?.setBackgroundResource(
+                if (iconCardView?.visibility != View.GONE) {
+                    if (useNewStyle) R.drawable.dialog_sheet_main_background_round_margin else R.drawable.dialog_sheet_main_background_round
+                } else {
+                    R.drawable.dialog_sheet_main_background_round
+                }
+            )
         } else {
             val bgView = bottomSheetDialog?.findViewById<View>(R.id.mainDialogContainer)
-            bgView?.setBackgroundResource(if (iconCardView?.visibility != View.GONE) {
-                if (useNewStyle) R.drawable.dialog_sheet_main_background_margin else R.drawable.dialog_sheet_main_background
-            } else {
-                R.drawable.dialog_sheet_main_background
-            })
+            bgView?.setBackgroundResource(
+                if (iconCardView?.visibility != View.GONE) {
+                    if (useNewStyle) R.drawable.dialog_sheet_main_background_margin else R.drawable.dialog_sheet_main_background
+                } else {
+                    R.drawable.dialog_sheet_main_background
+                }
+            )
         }
 
         this.roundedCorners = roundedCorners
@@ -432,7 +436,7 @@ open class DialogSheet(private val context: Context, private var useNewStyle: Bo
         setColoredNavBar(coloredNavigationBar)
 
         if (positiveButton?.visibility != View.VISIBLE) (negativeButton?.layoutParams as RelativeLayout.LayoutParams)
-                .addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
+            .addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
 
         if (!areButtonsVisible()) {
             var bottomPadding = 0
@@ -445,7 +449,8 @@ open class DialogSheet(private val context: Context, private var useNewStyle: Bo
             textContainer?.setPadding(0, topPadding, 0, bottomPadding)
         } else {
             if ((titleTextView?.text == null || TextUtils.isEmpty(titleTextView?.text))
-                    && messageTextView?.text != null && !TextUtils.isEmpty(messageTextView?.text)) textContainer?.setPadding(0, dpToPx(24), 0, 0)
+                && messageTextView?.text != null && !TextUtils.isEmpty(messageTextView?.text)
+            ) textContainer?.setPadding(0, dpToPx(24), 0, 0)
         }
 
         setRoundedCorners(roundedCorners)
@@ -455,7 +460,8 @@ open class DialogSheet(private val context: Context, private var useNewStyle: Bo
         // Landscape fixed width
         val configuration = context.resources.configuration
         if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE &&
-                configuration.screenWidthDp > 400) {
+            configuration.screenWidthDp > 400
+        ) {
             if (bottomSheetDialog?.window != null) bottomSheetDialog?.window?.setLayout(dpToPx(400), -1)
         }
     }
@@ -468,10 +474,7 @@ open class DialogSheet(private val context: Context, private var useNewStyle: Bo
         val accentColor = getAttrColor(context, R.attr.dialogSheetAccent)
         var posButtonTextColor = Color.WHITE
 
-        if (accentColor != -1) {
-            bottomSheetDialog = ExpandedBottomSheetDialog(context, R.style.DialogSheetTheme_Colored)
-            posButtonTextColor = getTextColor(accentColor)
-        } else bottomSheetDialog = ExpandedBottomSheetDialog(context, R.style.DialogSheetTheme)
+        bottomSheetDialog = ExpandedBottomSheetDialog(context, android.R.style.Theme_DeviceDefault_Dialog)
 
         bottomSheetDialog?.setContentView(if (useNewStyle) R.layout.layout_dialog_sheet_v2 else R.layout.layout_dialog_sheet)
 
@@ -527,13 +530,17 @@ open class DialogSheet(private val context: Context, private var useNewStyle: Bo
 
     private fun setSecondaryButtonColor(button: MaterialButton?, @ColorInt buttonColor: Int) {
         val rippleColor = adjustAlpha(buttonColor, 0.2f)
-        val secondaryButtonColor = ColorStateList(arrayOf(intArrayOf(android.R.attr.state_pressed),
-                intArrayOf(android.R.attr.state_focused), intArrayOf(android.R.attr.state_activated), intArrayOf()), intArrayOf(
+        val secondaryButtonColor = ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_pressed),
+                intArrayOf(android.R.attr.state_focused), intArrayOf(android.R.attr.state_activated), intArrayOf()
+            ), intArrayOf(
                 rippleColor,
                 rippleColor,
                 rippleColor,
                 Color.TRANSPARENT
-        ))
+            )
+        )
 
         button?.setTextColor(buttonColor)
         button?.rippleColor = secondaryButtonColor
